@@ -75,3 +75,10 @@ html, body {
     font-weight: bold;
     color: gold;
 }
+
+.gitLink {
+    float: right;
+    margin-right: 10px;
+    color: black;
+    font-style: italic;
+}

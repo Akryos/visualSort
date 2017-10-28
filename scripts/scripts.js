@@ -38,8 +38,9 @@ function buildElement(index, value) {
 
 function setSpeed() {
     var speedInput = $('#speedChooser').val();
+    
     if(speedInput.match(/^\d+$/)){//only digits and at least one
-        gs = speedInput;
+        gs = parseInt(speedInput);
     }
 }
 
