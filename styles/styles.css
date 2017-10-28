@@ -1,0 +1,77 @@
+html {
+    background-color: #ccffcc;
+}
+
+body {
+/*    padding-top: 150px;*/
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+#visualBox, #controlBox {
+    width: 90%;
+    margin: 1% 5%;
+    border: 1px solid black;
+}
+
+#visualBox {
+    height: 70%;
+    background-image: url("../images/background.jpg");
+    background-size: contain;
+}
+
+#controlBox {
+    height: 24%;
+}
+
+.controlSpacer {
+    width: 100%;
+    height: 25%;
+    display: table;
+}
+
+.controlSpacer > .innerWrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.innerWrapper > span {
+    display: inline-block;
+    width: 200px;
+}
+
+.innerWrapper > input, .innerWrapper > select {
+    width: 200px;
+}
+
+.innerWrapper > input[type="button"] {
+    width: 150px;
+}
+
+.innerWrapper > input[type="button"]:last-of-type {
+    margin-left: 65px;
+}
+
+.sortableElement {
+    position: absolute;
+    top: 100px;
+    
+    width: 64px;
+    height: 64px;
+    
+    background-image: url("../images/brick.png");
+    background-size: contain;
+    
+    text-align: center;
+    display:table;
+}
+
+.sortableElement > span {
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: bold;
+    color: gold;
+}

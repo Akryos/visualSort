@@ -1,7 +1,63 @@
-var globalSingleAnimateTime = 1000;
 var gl = [];//gl = global array animations left
 var gr = [];//gr = global array animations right
 var gc = 0;//gc = global animations counter
+var gs = 1000;//gs = global animations speed (in ms)
+
+$(document).ready(function() {
+    $('#setupButton').on('click', prepareStage);
+    $('#startButton').on('click', startAlgo);
+});
+
+function prepareStage() {
+    placeElements();
+}
+
+function placeElements() {
+    var arrElements = $('#elementsChooser').val().split(',');
+    
+    $.each(arrElements, function(index, value) {
+        $('#visualBox').append(buildElement(index, value));
+        $('#' + index).css({left: '+=' + ((index+1)*100)});
+    });
+}
+
+function buildElement(index, value) {
+    var elem = '<div class="sortableElement"'
+                   + 'id="' + index + '"'
+                   + 'data-value="' + value + '">' 
+                + '<span>' + value + '</span></div>';
+    
+    return elem;
+}
+
+function setSpeed() {
+    var speedInput = $('#speedChooser').val();
+    if(speedInput.match(/^\d+$/)){//only digits and at least one
+        gs = speedInput;
+    }
+}
+
+function startAlgo() {
+    var arrBlocks = [];
+    $.each($('.sortableElement'), function() {
+        arrBlocks.push(parseInt($(this).attr('data-value')));
+    });
+    
+    console.log(arrBlocks);
+    bubbleSort(arrBlocks);
+    workOffAnimations(0);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 $(document).ready(function() {
     var arrValues = [];
@@ -77,11 +133,11 @@ function swapElements(elemLeft, elemRight) {//actually just the value
 }
 
 function workOffAnimations(i) {
-    $(gl[i]['o']).animate(gl[i]['d'], globalSingleAnimateTime, function(){
+    $(gl[i]['o']).animate(gl[i]['d'], gs, function(){
         i++;
         if(i < gc) { workOffAnimations(i); }//do until last array element reached
     });
     
     //do the same for the right element array, but without callback
-    $(gr[i]['o']).animate(gr[i]['d'], globalSingleAnimateTime);
+    $(gr[i]['o']).animate(gr[i]['d'], gs);
 }
