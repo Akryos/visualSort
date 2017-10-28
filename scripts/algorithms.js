@@ -14,9 +14,12 @@ function bubbleSortSwap(arr, arrLength) {
   
     for(var i = 0; i < arrLength-1; i++) {
         var left = $('#' + arr[i]);
-        var right = $('#' + arr[i+1]);   
-
-        if($(left).attr('data-value') > right.attr('data-value')) {
+        var right = $('#' + arr[i+1]);
+        var leftV = ($(left).attr('data-value')).trim();
+        var rightV = (right.attr('data-value')).trim();
+        
+        
+        if(leftV > rightV) {
             swapElements(left, right);
             var tmp = arr[i];
             arr[i] = arr[i+1];
