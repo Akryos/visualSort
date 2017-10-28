@@ -1,14 +1,17 @@
-html {
-    background-color: #ccffcc;
+@font-face {
+  font-family: SuperMario256;
+  src: url("./SuperMario256.ttf");
+  font-weight: bold;
 }
 
-body {
-/*    padding-top: 150px;*/
+html {
+    background-color: #ccffcc;
 }
 
 html, body {
     height: 100%;
     overflow: hidden;
+    font-family: SuperMario256 !important;
 }
 
 #visualBox, #controlBox {
@@ -40,7 +43,7 @@ html, body {
 
 .innerWrapper > span {
     display: inline-block;
-    width: 200px;
+    width: 250px;
 }
 
 .innerWrapper > input, .innerWrapper > select {
@@ -52,7 +55,7 @@ html, body {
 }
 
 .innerWrapper > input[type="button"]:last-of-type {
-    margin-left: 65px;
+    margin-left: 100px;
 }
 
 .sortableElement {
