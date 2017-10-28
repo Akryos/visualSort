@@ -4,6 +4,10 @@
   font-weight: bold;
 }
 
+* {
+    font-family: SuperMario256 !important;
+}
+
 html {
     background-color: #ccffcc;
 }
@@ -11,7 +15,6 @@ html {
 html, body {
     height: 100%;
     overflow: hidden;
-    font-family: SuperMario256 !important;
 }
 
 #visualBox, #controlBox {
