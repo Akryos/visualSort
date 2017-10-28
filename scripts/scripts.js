@@ -2,6 +2,10 @@ var gl = [];//gl = global array animations left
 var gr = [];//gr = global array animations right
 var gc = 0;//gc = global animations counter
 var gs = 1000;//gs = global animations speed (in ms)
+var vDistanceSmall = 150;
+var vDistanceBig = 300;
+var hDistance = 100;
+var isRunning = false;
 
 $(document).ready(function() {
     $('#setupButton').on('click', prepareStage);
@@ -10,9 +14,11 @@ $(document).ready(function() {
 
 function prepareStage() {
     placeElements();
+    setSpeed();
 }
 
 function placeElements() {
+    $('#visualBox').html('');
     var arrElements = $('#elementsChooser').val().split(',');
     
     $.each(arrElements, function(index, value) {
@@ -38,71 +44,24 @@ function setSpeed() {
 }
 
 function startAlgo() {
+    if(isRunning) {
+        return false;
+    }
+    
+    isRunning = true;
+    
     var arrBlocks = [];
     $.each($('.sortableElement'), function() {
         arrBlocks.push(parseInt($(this).attr('data-value')));
     });
     
-    console.log(arrBlocks);
     bubbleSort(arrBlocks);
     workOffAnimations(0);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-$(document).ready(function() {
-    var arrValues = [];
-    
-    $.each($('div'), function() {
-        arrValues.push(parseInt($(this).attr('data-value')));
-    });
-    
-    bubbleSort(arrValues);
-    workOffAnimations(0);//0 to start off at the start of the array
-});
-
-function bubbleSort(arr) {
-    var boolNoSwap = true;
-    var arrLength = arr.length;
-    
-    boolNoSwap = inTheSort(arr, arrLength);
-    
-    if(!boolNoSwap) {
-        bubbleSort(arr);
-    }
-}
-
-function inTheSort(arr, arrLength) {
-    var boolNoSwap = true;
-    
-    for(var i = 0; i < arrLength-1; i++) {
-        if(arr[i] > arr[i+1]) {
-            swapElements(arr[i], arr[i+1]);
-            var tmp = arr[i];
-            arr[i] = arr[i+1];
-            arr[i+1] = tmp;
-            boolNoSwap = false;
-        }
-    }
-    
-    return boolNoSwap;
-}
-
-function swapElements(elemLeft, elemRight) {//actually just the value
-    var vDistanceSmall = 150;
-    var vDistanceBig = 300;
-    var hDistance = 100;
-    var left = $('div[data-value="' + elemLeft + '"]');
-    var right = $('div[data-value="' + elemRight + '"]');
+function swapElements(dataValLeft, dataValRight) {
+    var left = $('div[data-value="' + dataValLeft + '"]');
+    var right = $('div[data-value="' + dataValRight + '"]');
     
     //down
     gl[gc] = [];
@@ -135,7 +94,11 @@ function swapElements(elemLeft, elemRight) {//actually just the value
 function workOffAnimations(i) {
     $(gl[i]['o']).animate(gl[i]['d'], gs, function(){
         i++;
-        if(i < gc) { workOffAnimations(i); }//do until last array element reached
+        if(i < gc) {//do until last array element was used
+            workOffAnimations(i);
+        } else {//animation process has finished
+            isRunning = false;
+        }
     });
     
     //do the same for the right element array, but without callback

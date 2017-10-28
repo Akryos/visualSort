@@ -9,6 +9,7 @@
         
         <script type="text/JavaScript" src="scripts/jquery-3.2.1.min.js"></script>
         <script type="text/JavaScript" src="scripts/scripts.js"></script>
+        <script type="text/JavaScript" src="scripts/algorithms.js"></script>
     </head>
     <body>
         
