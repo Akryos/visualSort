@@ -52,17 +52,14 @@ function startAlgo() {
     
     var arrBlocks = [];
     $.each($('.sortableElement'), function() {
-        arrBlocks.push(parseInt($(this).attr('data-value')));
+        arrBlocks.push(parseInt($(this).attr('id')));
     });
     
     bubbleSort(arrBlocks);
     workOffAnimations(0);
 }
 
-function swapElements(dataValLeft, dataValRight) {
-    var left = $('div[data-value="' + dataValLeft + '"]');
-    var right = $('div[data-value="' + dataValRight + '"]');
-    
+function swapElements(left, right) {
     //down
     gl[gc] = [];
     gr[gc] = [];
