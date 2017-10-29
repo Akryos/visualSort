@@ -23,7 +23,7 @@ function placeElements() {
     
     $.each(arrElements, function(index, value) {
         $('#visualBox').append(buildElement(index, value));
-        $('#' + index).css({left: '+=' + ((index+1)*100)});
+        $('#' + index).css({left: '+=' + ((index+1)*hDistance)});
     });
 }
 
@@ -56,8 +56,25 @@ function startAlgo() {
         arrBlocks.push(parseInt($(this).attr('id')));
     });
     
-    bubbleSort(arrBlocks);
+    activateAlgo(arrBlocks);
     workOffAnimations(0);
+}
+
+function activateAlgo(arrBlocks) {
+    var algoType = $('#algorithmChooser').val();
+   
+    switch(algoType) {
+        case 'bubble':
+            bubbleSort(arrBlocks);
+            break;
+            
+        case 'selection':
+            selectionSort(arrBlocks);
+            break;
+            
+        default:
+            break;
+    }
 }
 
 function swapElements(left, right) {

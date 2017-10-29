@@ -30,3 +30,42 @@ function bubbleSortSwap(arr, arrLength) {
     
     return boolNoSwap;
 }
+
+function selectionSort(arr) {
+    var arrLength = arr.length;
+    var currPos;
+    var currMin;
+    var tmp;
+    
+    console.log(arr);
+    
+    for(var i = 0; i < arrLength; i++) {
+        currPos = i;
+        currMin = $('#' + arr[i]).attr('data-value');
+        
+        for(var j = i; j < arrLength; j++) {
+            if(currMin > $('#' + arr[j]).attr('data-value')) {
+                currMin = $('#' + arr[j]).attr('data-value');
+                currPos = j;
+            }
+        }
+        
+        tmp = arr[i];
+        arr[i] = arr[currPos];
+        arr[currPos] = tmp;
+        
+        console.log(i + ' / ' + currPos);
+        
+        if(i !== currPos) {
+            var diff = currPos - i;
+            hDistance = diff * 100;
+            swapElements(
+                    $('#' + arr[currPos]),
+                    $('#' + arr[i])
+                    );
+        }
+    } 
+    
+    
+    console.log(arr);
+}
