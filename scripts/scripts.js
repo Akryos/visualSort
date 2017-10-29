@@ -5,6 +5,7 @@ var gs = 1000;//gs = global animations speed (in ms)
 var vDistanceSmall = 150;
 var vDistanceBig = 300;
 var hDistance = 100;
+var hDistanceAmount = 1;
 var isRunning = false;
 
 $(document).ready(function() {
@@ -91,9 +92,9 @@ function swapElements(left, right) {
     gl[gc] = [];
     gr[gc] = [];
     gl[gc]['o'] = $(left);
-    gl[gc]['d'] = { left: "+=" + hDistance};
+    gl[gc]['d'] = { left: "+=" + (hDistance * hDistanceAmount)};
     gr[gc]['o'] = $(right);
-    gr[gc]['d'] = { left: "-=" + hDistance};
+    gr[gc]['d'] = { left: "-=" + (hDistance * hDistanceAmount)};
     gc++;
     
     //up

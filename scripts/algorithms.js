@@ -37,8 +37,6 @@ function selectionSort(arr) {
     var currMin;
     var tmp;
     
-    console.log(arr);
-    
     for(var i = 0; i < arrLength; i++) {
         currPos = i;
         currMin = $('#' + arr[i]).attr('data-value');
@@ -54,18 +52,9 @@ function selectionSort(arr) {
         arr[i] = arr[currPos];
         arr[currPos] = tmp;
         
-        console.log(i + ' / ' + currPos);
-        
         if(i !== currPos) {
-            var diff = currPos - i;
-            hDistance = diff * 100;
-            swapElements(
-                    $('#' + arr[currPos]),
-                    $('#' + arr[i])
-                    );
+            hDistanceAmount = currPos - i;
+            swapElements($('#' + arr[currPos]), $('#' + arr[i]));
         }
     } 
-    
-    
-    console.log(arr);
 }
