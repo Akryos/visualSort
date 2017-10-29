@@ -31,8 +31,8 @@ function placeElements() {
 function buildElement(index, value) {
     var elem = '<div class="sortableElement"'
                    + 'id="' + index + '"'
-                   + 'data-value="' + value + '">' 
-                + '<span>' + value + '</span></div>';
+                   + 'data-value="' + value.trim() + '">' 
+                + '<span>' + value.trim() + '</span></div>';
     
     return elem;
 }
