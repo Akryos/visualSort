@@ -19,6 +19,7 @@ function prepareStage() {
 }
 
 function placeElements() {
+    gc = 0;
     $('#visualBox').html('');
     var arrElements = $('#elementsChooser').val().split(',');
     
