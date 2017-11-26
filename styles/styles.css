@@ -1,11 +1,11 @@
 @font-face {
-  font-family: SuperMario256;
-  src: url("./SuperMario256.ttf");
+  font-family: "Polygon Party"; /* http://www.fontspace.com/ultra-cool-fonts/polygon-party */
+  src: url("./POLYPTY_.ttf");
   font-weight: bold;
 }
 
 * {
-    font-family: SuperMario256 !important;
+    font-family: "Polygon Party" !important;
 }
 
 html {
